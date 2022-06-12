@@ -1,0 +1,7 @@
+/img
+/node_modules
+/package-lock.json
+/package.json
+apiurl.js
+node/paths.js
+hed.js

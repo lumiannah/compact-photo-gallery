@@ -1,0 +1,163 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-size: 100%;
+    background-color: hsl(280, 13%, 10%);
+    max-width: 1280px;
+    margin-inline: auto;
+    /* scroll-snap-type: y; */
+    /* scroll-behavior: smooth; */
+    color: #fff;
+}
+
+img {
+    -drag: none;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-drag: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+a {
+	color: #fff;
+	text-decoration: none;
+	outline: none;
+	border: 0;
+}
+
+a:focus, a:active, a:visited {
+	color: #fff;
+}
+
+
+.grid-gallery {
+    margin-block: 0.5rem;
+    display: grid;
+    /* grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); */
+    grid-template-columns: repeat(3, calc(33.333% - 0.75vw));
+    gap: 1vw;
+    color: hsl(0, 0%, 10%);
+    transition: transform 500ms;
+
+}
+
+.grid-gallery-item {
+    background-color: rgb(240, 240, 240);
+    transition: background-color 200ms;
+    display: grid;
+    justify-items: center;
+    scroll-snap-align: start;
+    scroll-margin-top: 0.95rem;
+}
+
+@media (hover: hover) {
+    .grid-gallery-item:hover img {
+        filter: brightness(40%);
+    }
+    .grid-gallery-item:hover {
+        cursor: pointer;
+    }
+    .hoverable:hover {
+        color: #000;
+        background-color: #fff;
+    }
+    .overlay .button:hover {
+        color: #000;
+        background-color: #fff;
+    }
+}
+
+.grid-gallery-item img {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    object-fit: cover;
+    transition: all 200ms;
+    margin-block: -0.1px;
+}
+
+.overlay {
+    background-color: hsl(280, 13%, 10%);
+    position: fixed;
+    inset: 0;
+    visibility: hidden;
+    margin-inline: auto;
+    transform: translateX(100vw);
+    transition: transform 400ms;
+    display: grid;
+    grid-template-columns: 100% 100%;
+    place-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+
+.overlay-active {
+    transform: translateX(0vw);
+}
+.gallery-inactive {
+    transform: translateX(-100vw);
+    transition: transform 400ms;
+}
+
+.overlay img {
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+    transition: transform 400ms;
+}
+
+.overlay img.slide-right {
+    transform: translateX(100%);
+}
+.overlay img.slide-left {
+    transform: translateX(-100%);
+}
+
+.hoverable {
+    cursor: pointer;
+}
+
+.buttons {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: grid;
+    grid-template-columns: 1fr auto auto auto;
+    gap: 0.5rem;
+    padding: .5rem;
+    transition: opacity 500ms linear;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.button {
+    background-color: rgba(145, 114, 138, 0.808);
+    width: 2rem;
+    height: 3rem;
+    border-radius: .5rem;
+    display: grid;
+    place-items: center;
+    padding: .5rem 1rem;
+    cursor: pointer;
+}
+
+.download svg {
+    height: 70%;
+}
+
+.info-overlay {
+    visibility: hidden;
+    position: fixed;
+    top: 6rem;
+    left: .5rem;
+    right: .5rem;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: .5rem;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 1rem;
+    grid-auto-rows: min-content;
+    padding: 1rem;
+}
